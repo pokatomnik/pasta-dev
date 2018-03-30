@@ -44,7 +44,6 @@ class TopMenu extends PureComponent {
   }
 
   logout() {
-    console.log(this.props);
     this.props.dispatch(this.props.logout(true));
   }
 

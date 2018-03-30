@@ -1,18 +1,19 @@
-import * as actionTypes from './actionTypes';
+import * as userActionTypes from './actionTypes';
+import * as errorActionTypes from '../error/actionTypes';
 import Backendless from 'backendless';
 import {LocalStorageService} from '../../services/LocalStorage';
 import {lsKey} from '../../constants';
 import {push} from 'react-router-redux';
 
 export default {
-  [actionTypes.login]: (email, password, goHome = false) => (dispatch, getState) => {
+  [userActionTypes.login]: (email, password, goHome = false) => (dispatch, getState) => {
     const ls = new LocalStorageService(lsKey);
     Backendless.UserService
       .login(email, password)
       .then(({email, isAdmin, name}) => {
         ls.save({ email, password });
         dispatch({
-          type: actionTypes.login,
+          type: userActionTypes.login,
           email,
           isAdmin,
           name
@@ -24,20 +25,20 @@ export default {
       .catch((error) => {
         ls.flush();
         dispatch({
-          type: actionTypes.login,
-          error
+          type: errorActionTypes.setError,
+          title: 'Can\'n login',
+          text: 'Invalid login and/or password'
         });
-        //todo show an error
       });
   },
-  [actionTypes.logout]: (goHome = false) => (dispatch) => {
+  [userActionTypes.logout]: (goHome = false) => (dispatch) => {
     const ls = new LocalStorageService(lsKey);
     Backendless.UserService
       .logout()
       .then(() => {
         ls.flush();
         dispatch({
-          type: actionTypes.logout
+          type: userActionTypes.logout
         });
         if (goHome) {
           dispatch(push('/'));
@@ -46,9 +47,10 @@ export default {
       .catch((error) => {
         ls.flush();
         dispatch({
-          error
+          type: errorActionTypes.setError,
+          title: 'Can\'t logout',
+          text: 'Unknown error'
         });
-        //todo show an error
       })
   }
 };

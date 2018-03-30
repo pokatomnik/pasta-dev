@@ -6,10 +6,12 @@ import createHistory from 'history/createHashHistory';
 import { Route } from 'react-router';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 import user from './reducers/user/user';
+import error from './reducers/error/error';
 import thunk from 'redux-thunk';
 import Home from './components/Home/Home';
 import LoginScreen from './components/Login/LoginScreen';
 import ProfileScreen from './components/Profile/ProfileScreen';
+import Error from './components/Error/Error';
 import TopMenu from './components/common/TopMenu/TopMenu';
 import {LocalStorageService} from './services/LocalStorage';
 import {lsKey} from './constants';
@@ -24,7 +26,7 @@ const router = routerMiddleware(history);
 const store = createStore(combineReducers({
   // my reducers
   user,
-
+  error,
   // router
   router: routerReducer
 }), applyMiddleware(
@@ -61,6 +63,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={LoginScreen} />
             <Route exact path="/profile" component={ProfileScreen} />
+            <Error />
           </div>
         </ConnectedRouter>
       </Provider>

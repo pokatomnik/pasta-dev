@@ -3,8 +3,7 @@ import * as actionTypes from '../../actions/user/actionTypes';
 const initialState = {
     email: null,
     isAdmin: false,
-    name: null,
-    error: null,
+    name: null
 };
 
 const reducers = {
