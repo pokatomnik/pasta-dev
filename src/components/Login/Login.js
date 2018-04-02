@@ -57,7 +57,7 @@ export default class Login extends PureComponent {
             <FormControl type="password"
                         onChange={this.passwordChange} />
           </FormGroup>
-        <Button type="submit" className="pull-right" bsStyle="success">Login</Button>
+        <Button type="submit" bsStyle="success">Login</Button>
       </form>
     );
   }

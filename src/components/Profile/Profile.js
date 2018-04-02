@@ -8,9 +8,12 @@ import './Profile.css';
 
 const BLOCK_NAME = 'profile';
 
-const titleClass = bem(BLOCK_NAME, 'title', 'pull-right');
-
+const titleClass = bem(BLOCK_NAME, 'title');
 const valueClass = bem(BLOCK_NAME, 'value');
+const pastaRowClass = bem(BLOCK_NAME, 'row');
+
+const KEY_LENGTH = 5;
+const VALUE_LENGTH = 5;
 
 export default class Profile extends PureComponent {
   static propTypes = {
@@ -22,43 +25,49 @@ export default class Profile extends PureComponent {
   render() {
     return (
       <div>
-        <Row key="name">
-          <Col md={3}>
+        <Row key="name" className={pastaRowClass}>
+          
+          <Col md={KEY_LENGTH}>
             <span className={titleClass}>
               User Name:
             </span>
           </Col>
-          <Col md={9}>
+          <Col md={VALUE_LENGTH}>
             <span className={valueClass}>
               {this.props.name}
             </span>
           </Col>
+          
         </Row>
 
-        <Row key="email">
-          <Col md={3}>
+        <Row key="email" className={pastaRowClass}>
+          
+          <Col md={KEY_LENGTH}>
             <span className={titleClass}>
               Email:
             </span>
           </Col>
-          <Col md={9}>
+          <Col md={VALUE_LENGTH}>
             <span className={valueClass}>
               {this.props.email}
             </span>
           </Col>
+          
         </Row>
 
-        <Row key="isAdmin">
-          <Col md={3}>
+        <Row key="isAdmin" className={pastaRowClass}>
+          
+          <Col md={KEY_LENGTH}>
             <span className={titleClass}>
               Is admin:
             </span>
           </Col>
-          <Col md={9}>
+          <Col md={VALUE_LENGTH}>
             <input type="checkbox" disabled checked={this.props.isAdmin} />
             &nbsp;
             <span className={valueClass}>{this.props.isAdmin ? 'yes' : 'no'}</span>
           </Col>
+          
         </Row>
       </div>
     );

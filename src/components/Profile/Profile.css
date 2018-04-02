@@ -1,3 +1,7 @@
 .profile__title {
   font-weight: bold;
 }
+
+.profile__row {
+  margin-bottom: 10px;
+}

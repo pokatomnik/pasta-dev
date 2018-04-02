@@ -16,6 +16,7 @@ import LoginButton from './LoginButton';
 import UserMenu from './UserMenu';
 import {logout} from '../../../actions/user/actionTypes';
 import userActions from '../../../actions/user/user';
+import {Link} from 'react-router-dom';
 
 import './TopMenu.css';
 
@@ -30,7 +31,7 @@ class TopMenu extends PureComponent {
     super(props);
 
     this.renderUserStuff = this.renderUserStuff.bind(this);
-    this.navigateToLogin = this.navigateToLogin.bind(this);
+    this.goToLogin = this.goToLogin.bind(this);
     this.logout = this.logout.bind(this);
     this.goToProfile = this.goToProfile.bind(this);
   }
@@ -39,7 +40,7 @@ class TopMenu extends PureComponent {
     this.props.dispatch(push('/profile'));
   }
 
-  navigateToLogin() {
+  goToLogin() {
     this.props.dispatch(push('/login'));
   }
 
@@ -57,7 +58,7 @@ class TopMenu extends PureComponent {
       );
     } else {
       return (
-        <LoginButton navigate={this.navigateToLogin} />
+        <LoginButton navigate={this.goToLogin} />
       );
     }
   }
@@ -67,7 +68,7 @@ class TopMenu extends PureComponent {
       <Navbar inverse collapseOnSelect className="top-menu">
         <Navbar.Header>
           <Navbar.Brand>
-            Pasta
+            <Link to="/">Pasta</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

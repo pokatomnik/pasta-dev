@@ -1,5 +1,4 @@
 .login-screen {
-  width: 100vw;
   height: calc(100vh - 71px);
   display: flex;
   justify-content: center;

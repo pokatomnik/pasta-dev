@@ -18,6 +18,8 @@ import {lsKey} from './constants';
 import userActions from './actions/user/user';
 import {login} from './actions/user/actionTypes';
 import texture from './assets/back.png';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
 
 const history = createHistory();
 
@@ -60,10 +62,16 @@ class App extends Component {
         <ConnectedRouter history={history}>
           <div className="App" style={style}>
             <TopMenu />
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={LoginScreen} />
-            <Route exact path="/profile" component={ProfileScreen} />
-            <Error />
+            <div className="container">
+              <Row>
+                <Col md={12}>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/login" component={LoginScreen} />
+                  <Route exact path="/profile" component={ProfileScreen} />
+                  <Error />
+                </Col>
+              </Row>
+            </div>
           </div>
         </ConnectedRouter>
       </Provider>

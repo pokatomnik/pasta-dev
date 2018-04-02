@@ -1,4 +1,4 @@
 export default (block, element, ...classes) => [
-  `${block}__${element}`,
+  element ? `${block}__${element}` : block,
   ...classes
 ].join(' ');

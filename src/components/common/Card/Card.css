@@ -1,0 +1,10 @@
+.card {
+  padding: 30px;
+}
+
+.card__card-content {
+  padding: 30px;
+  box-shadow: 1px 1px 3px #505050;
+  background: white;
+  border-radius: 0px 20px;
+}
