@@ -1,0 +1,13 @@
+.pasta-form__textarea {
+  resize: vertical;
+  min-height: 250px;
+}
+
+.pasta-form__encrypted-state {
+  display: inline-block;
+  width: 100px;
+}
+
+.pasta-form__invisible {
+  display: none;
+}
